@@ -6,7 +6,11 @@ ESP32 mengganti mac ESP8266. Keduanya sama-sama menampilkan web, hanyasaja berbe
 Pengiriman pesan by protokol mqtt
 
 Kebutuhan:
+
 ESP32 1 Biji
+
 ESP8266 1 Biji
+
 Wifi untuk koneksi internet
+
 Server MQTT
