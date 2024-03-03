@@ -7,10 +7,10 @@ Pengiriman pesan by protokol mqtt
 
 Kebutuhan:
 
-ESP32 1 Biji
+- ESP32 1 Biji
 
-ESP8266 1 Biji
+- ESP8266 1 Biji
 
-Wifi untuk koneksi internet
+- Wifi untuk koneksi internet
 
-Server MQTT
+- Server MQTT
