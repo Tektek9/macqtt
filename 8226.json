@@ -1,0 +1,7 @@
+{
+  "a": "SSID Wifi",
+  "b": "Password Wifi",
+  "c": "IP MQTT Broker",
+  "d": "esp32/control",
+  "e": 9999
+}
