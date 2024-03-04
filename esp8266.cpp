@@ -37,7 +37,7 @@ void setup() {
         html += "<p>Status Koneksi MQTT: Terhubung</p>";
     } else {
         html += "<p>Return Kode: " + String(client.state()) + "</p>";
-        html += "<p>Status Koneksi MQTT: Sedang mengkoneksikan ke MQQT...</p>";
+        html += "<p>Status Koneksi MQTT: Sedang mengkoneksikan ke MQTT...</p>";
     }
 
     html += "<p>Hostname ESP8266: " + WiFi.hostname() + "</p>";
