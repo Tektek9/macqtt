@@ -101,7 +101,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
   if (receivedTopic == "esp32/control") {
     payload[length] = '\0';
     String command = String((char*)payload);
-    if (command == "ganti mac") {
+    if (command == "gantimac") {
       changeMac();
     }
   }
