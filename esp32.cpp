@@ -37,7 +37,7 @@ void setup() {
     if (client.connected()) {
         html += "<p>Status Koneksi MQTT: Terhubung</p>";
     } else {
-        html += "<p>Status Koneksi MQTT: Sedang mengkoneksikan ke MQQT...</p>";
+        html += "<p>Status Koneksi MQTT: Sedang mengkoneksikan ke MQTT...</p>";
         html += "<p>Return Kode: "+ client.state() +"</p>";
     }
 
