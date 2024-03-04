@@ -122,6 +122,4 @@ void changeMac() {
   char newMac[18];
   sprintf(newMac, "%02X:%02X:%02X:%02X:%02X:%02X", random(256), random(256), random(256), random(256), random(256), random(256));
   WiFi.macAddress(newMac);
-  Serial.print("Mac Address baru: ");
-  Serial.println(WiFi.macAddress());
 }
