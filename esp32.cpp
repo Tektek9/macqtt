@@ -37,7 +37,7 @@ void setup() {
     if (client.connected()) {
         html += "<p>Status Koneksi MQTT: Terhubung</p>";
     } else {
-        html += "<p>Status Koneksi MQTT: Tidak Terhubung</p>";
+        html += "<p>Status Koneksi MQTT: Sedang mengkoneksikan ke MQQT...</p>";
         html += "<p>Return Kode: "+ client.state() +"</p>";
     }
 
@@ -105,7 +105,6 @@ bool bukaConf() {
 
 void reconnect() {
   while (!client.connected()) {
-    Serial.println("Sedang mengkoneksikan ke MQQT...");
     if (client.connect("esp32Client")) {
       client.subscribe("esp8266/status");
     } else {
