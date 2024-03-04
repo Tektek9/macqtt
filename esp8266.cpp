@@ -27,9 +27,24 @@ void setup() {
   client.setCallback(callback);
 
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
-    String html = "<!DOCTYPE html><html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>ESP8266 MAC Address Monitoring</title><style>body{font-family:Arial,sans-serif;background-color:#f4f4f4;margin:0;padding:0;display:flex;align-items:center;justify-content:center;height:100vh}h2,p{text-align:center;color:#333}p{font-size:1.2em;margin-top:10px}</style></head><body><h2>Update MAC Address ESP8266 Terbaru</h2><p>" + WiFi.macAddress() + "</p></body></html>";
+    String html = "<!DOCTYPE html><html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>ESP8266 MAC Address Monitoring</title>";
+    html += "<style>body{font-family:Arial, sans-serif;background-color:#f4f4f4;margin:0;padding:0;display:flex;align-items:center;justify-content:center;height:100vh}";
+    html += "h2,p{text-align:center;color:#333}p{font-size:1.2em;margin-top:10px} @media (max-width: 600px) { h2, p { font-size: 1em; } }</style>";
+    html += "</head><body><h2>Update MAC Address ESP8266 Terbaru</h2>";
+    html += "<p>MAC Address ESP8266: " + WiFi.macAddress() + "</p>";
+
+    if (client.connected()) {
+        html += "<p>Status Koneksi MQTT: Terhubung</p>";
+    } else {
+        html += "<p>Return Kode: " + String(client.state()) + "</p>";
+        html += "<p>Status Koneksi MQTT: Tidak Terhubung</p>";
+    }
+
+    html += "<p>Hostname ESP8266: " + WiFi.hostname() + "</p>";
+    html += "</body></html>";
+    
     request->send(200, "text/html", html);
-  });
+});
 
   server.begin();
 }
@@ -85,11 +100,8 @@ void reconnect() {
   while (!client.connected()) {
     Serial.println("Sedang mengkoneksikan ke MQQT...");
     if (client.connect("esp32Client")) {
-      Serial.println("Sukses konek MQTT broker");
       client.subscribe("esp8266/status");
     } else {
-      Serial.print("Gagal, return kode ");
-      Serial.print(client.state());
       Serial.println(" mencoba ulang 5 detik lagi...");
       delay(5000);
     }
