@@ -36,14 +36,16 @@ void setup() {
 
     if (client.connected()) {
         html += "<p>Status Koneksi MQTT: Terhubung</p>";
+        html += "<p>IP Brocker: " + mqtt_server + ":"+ mqtt_port +"</p>";
     } else {
         html += "<p>Status Koneksi MQTT: Sedang mengkoneksikan ke MQTT...</p>";
         html += "<p>Return Kode: "+ client.state() +"</p>";
     }
 
-    html += "<p>Hostname ESP32: " + WiFi.getHostname() + "</p>";
+    html += "<p>Hostname:" + WiFi.getHostname() + "</p>";
+    html += "<p>IP      :" + WiFi.localIP() + "</p>";
     html += "</body></html>";
-    
+
     request->send(200, "text/html", html);
   });
 
