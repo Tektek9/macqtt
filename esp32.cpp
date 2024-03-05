@@ -26,8 +26,7 @@ void setup() {
   client.setServer(mqtt_server, mqtt_port);
 
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
-    String html = "<!DOCTYPE html><html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>Akang ESP32</title><style>body{font-family:Arial,sans-serif;background-color:#f4f4f4;margin:0;padding:0;display:flex;align-items:center;justify-content:center;height:100vh} form{background-color:#fff;padding:20px;border-radius:8px;box-shadow:0 0 10px rgba(0,0,0,0.1)} label{display:block;margin-bottom:10px;font-weight:bold} button{background-color:#4caf50;color:white;padding:10px 20px;border:none;border-radius:4px;cursor:pointer} @media screen and (max-width: 600px) {form{padding: 10px;}}</style></head>";
-    html += "<body><form action='/submit' method='post'><label for='mac'>Ganti MAC ESP 8266:</label><button id='mac' name='mac' type='submit' value='gantimac'>Ganti Mac ESP 8266</button></form>";
+    String html = "<!DOCTYPE html><html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>Akang ESP32</title><style>body{font-family:Arial,sans-serif;background-color:#f4f4f4;margin:0;padding:0;display:flex;align-items:center;justify-content:center;height:100vh} form{background-color:#fff;padding:20px;border-radius:8px;box-shadow:0 0 10px rgba(0,0,0,0.1)} label{display:block;margin-bottom:10px;font-weight:bold} button{background-color:#4caf50;color:white;padding:10px 20px;border:none;border-radius:4px;cursor:pointer} @media screen and (max-width: 600px) {form{padding: 10px;}}</style></head><body><form action='/submit' method='post'><label for='mac'>Ganti MAC ESP 8266:</label><button id='mac' name='mac' type='submit' value='gantimac'>Ganti Mac ESP 8266</button></form>";
 
     if (client.connected()) {
         html += "<p>Status Koneksi MQTT: Terhubung</p><p>IP Brocker: " + mqtt_server + ":"+ mqtt_port +"</p>";
