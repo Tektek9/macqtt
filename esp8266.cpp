@@ -27,24 +27,16 @@ void setup() {
   client.setCallback(callback);
 
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
-    String html = "<!DOCTYPE html><html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>ESP8266 MAC Address Monitoring</title>";
-    html += "<style>body{font-family:Arial, sans-serif;background-color:#f4f4f4;margin:0;padding:0;display:flex;align-items:center;justify-content:center;height:100vh}";
-    html += "h2,p{text-align:center;color:#333}p{font-size:1.2em;margin-top:10px} @media (max-width: 600px) { h2, p { font-size: 1em; } }</style>";
-    html += "</head><body><h2>Update MAC Address ESP8266 Terbaru</h2>";
-    html += "<p>MAC Address ESP8266: " + WiFi.macAddress() + "</p>";
+    String html = "<!DOCTYPE html><html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>ESP8266 MAC Address Monitoring</title><style>body{font-family:Arial, sans-serif;background-color:#f4f4f4;margin:0;padding:0;display:flex;align-items:center;justify-content:center;height:100vh} h2,p{text-align:center;color:#333}p{font-size:1.2em;margin-top:10px} @media (max-width: 600px) { h2, p { font-size: 1em; } }</style> </head><body><h2>Update MAC Address ESP8266 Terbaru</h2><p>MAC Address ESP8266: " + WiFi.macAddress() + "</p>";
 
     if (client.connected()) {
-        html += "<p>Status Koneksi MQTT: Terhubung</p>";
-        html += "<p>IP Brocker: " + mqtt_server + ":"+ mqtt_port +"</p>";
+        html += "<p>Status Koneksi MQTT: Terhubung</p><p>IP Brocker: " + mqtt_server + ":"+ mqtt_port +"</p>";
     } else {
-        html += "<p>Status Koneksi MQTT: Sedang mengkoneksikan ke MQTT...</p>";
-        html += "<p>Return Kode: "+ client.state() +"</p>";
+        html += "<p>Status Koneksi MQTT: Sedang mengkoneksikan ke MQTT...</p><p>Return Kode: "+ client.state() +"</p>";
     }
 
-    html += "<p>Hostname:" + WiFi.getHostname() + "</p>";
-    html += "<p>IP      :" + WiFi.localIP() + "</p>";
-    html += "</body></html>";
-    
+    html += "<p>Hostname:" + WiFi.getHostname() + "</p><p>IP      :" + WiFi.localIP() + "</p></body></html>";
+
     request->send(200, "text/html", html);
 });
 
